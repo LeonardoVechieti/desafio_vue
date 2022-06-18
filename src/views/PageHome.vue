@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <MyLogo />
-    
+    <div id="form-flex">
     <MyInput  placeholderInput="Full name"
         classDivForm="form-1"
         type="text"
@@ -14,7 +14,7 @@
         fieldInput="Full Name *"
         />
     <MyInput
-        placeholderInput="Email"
+        placeholderInput="foo@bar.com"
         type="email"
         classInput="input-2"
         labelInput="email"
@@ -26,7 +26,7 @@
       />
       <MyInput
         classDivForm="form-3"
-        placeholderInput="Phone"
+        placeholderInput="(83) 00000-0000"
         type="text"
         classInput="input-3"
         labelInput="phone"
@@ -52,7 +52,7 @@
         invalidText="Date Invalid"
         fieldInput="Birthday *"
       />
-      
+    </div>  
     
     <div class="footer">
       <div class="my-check-box">
@@ -85,28 +85,7 @@ export default {
 }
 </script>
 
-<style>
-
-body{
-    background-color: #ECEEF2;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-}
-.page{
-    background-color: #FFFFFF;
-    margin-top: 6em;
-    margin-bottom: 6em;
-    width: 35em;
-    
-    
-    padding: 1.5em;
-    border: none;
-    border-radius: 15px;
-    
-}
+<style scoped>
 
 .footer{
     display: flex;

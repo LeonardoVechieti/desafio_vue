@@ -9,15 +9,15 @@
         :placeholder="placeholderInput"
         :id="idInput"
         :value="valueInput"
+        @input="valorPegar"
       />
-    
-  </div>
+    </div>
   </form>
   </div>
 </template>
 
 <script>
-
+import {mapActions} from "vuex"
 export default {
   name: "MyInput",
   components: {},
@@ -31,22 +31,34 @@ export default {
     valueInput: String,
     fieldInput: String,
     
-  }
+  }, 
+  methods: {
+    ...mapActions(["setName", "setEmail", "setPhone", "setPassword","setDate", "setButton"]),
+    valorPegar(e){
+      if(this.classInput === "input-1"){
+        this.setName(e.target.value);
+      }else if(this.classInput === "input-2"){
+        this.setEmail(e.target.value);
+      }else if(this.classInput === "input-3"){
+        this.setPhone(e.target.value);
+      }else if(this.classInput === "input-4"){
+        this.setPassword(e.target.value);
+      }else if(this.classInput === "input-5"){
+        this.setDate(e.target.value);
+      }else if(this.classInput === "input-6"){
+        this.setButton(e.target.value);
+      }
+    },
+   },
   
  }
 </script>
 
 <style scooped>
-.form {
-background-color: #FFFFFF;
-margin-top: 1em;
-margin-bottom: 2em;
-border: none;
-border-radius: 15px;
-display: flex;
-flex-wrap: wrap;
-flex-direction: row;
-  
+form div{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .form label {
@@ -55,6 +67,7 @@ flex-direction: row;
 }
 
 .form input {
+ 
     padding: 0.8em;
     border: 1px solid #CCC;
     border-color: #8d7a7a ;
@@ -62,7 +75,7 @@ flex-direction: row;
     outline: none;
 }
 .form-1 {
-  width: 95%;
+  width: 100%;
 }
 .form-1,
 .form-2 {
@@ -72,7 +85,7 @@ flex-direction: row;
 
 .form-2,
 .form-4 {
-  width: 50%;
+  width: 35%;
   
 }
 
