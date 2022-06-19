@@ -1,65 +1,81 @@
 <template>
   <div class="page">
+   
     <MyLogo />
-    <div id="form-flex">
-    <MyInput  placeholderInput="Full name"
-        classDivForm="form-1"
+     <div class="flex">
+    
+    <MyInput  
+        idForm="form-1"
+        placeholderInput="Full name"
+        classDivForm="form"
         type="text"
         classInput="input-1"
         labelInput="name"
         idInput="name"
         value="fullName"
         smallClass="classSmall"
-        invalidText="Fullname Invalid"
         fieldInput="Full Name *"
+        erro="Name Invalid"
+        idErro="erro-1"
         />
     <MyInput
+        idForm="form-2"
         placeholderInput="foo@bar.com"
         type="email"
         classInput="input-2"
         labelInput="email"
         idInput="email"
         valueInput=""
-        classDivForm="form-2"
+        classDivForm="form"
         fieldInput="Email *"
+        erro="Email Invalid"
+        idErro="erro-2"
          
       />
       <MyInput
-        classDivForm="form-3"
+        idForm="form-3"
+        classDivForm="form"
         placeholderInput="(83) 00000-0000"
         type="text"
         classInput="input-3"
         labelInput="phone"
         idInput="phone"
-        invalidText="Phone Invalid"
         fieldInput="Phone *"
+        erro="Phone Invalid"
+        idErro="erro-3"
       />
       <MyInput
-        classDivForm="form-4"
+        idForm="form-4"
+        classDivForm="form"
         placeholderInput="Password"
         type="password"
         classInput="input-4"
         labelInput="password"
         idInput="password"
         fieldInput="Password *"
+        erro="Password Invalid"
+        idErro="erro-4"
       />
       <MyInput
-        classDivForm="form-5"
+        idForm="form-5"
+        classDivForm="form"
         type="date"
         classInput="input-5"
         labelInput="birthday"
         idInput="Birthday"
         invalidText="Date Invalid"
         fieldInput="Birthday *"
+        erro="Age Invalid"
+        idErro="erro-5"
       />
-    </div>  
     
+    </div>
     <div class="footer">
       <div class="my-check-box">
         <MyCheckbox />
       </div>
       <div class="my-button">
-        <MyButton name="Register" />
+        <MyButton name="Register" classButton="register" />
       </div>  
     </div>
   </div>
@@ -85,11 +101,26 @@ export default {
 }
 </script>
 
-<style scoped>
-
-.footer{
+<style  >
+.flex{   
+  
+margin-top: 1em;
+margin-bottom: 2em;
+display: flex;
+flex-wrap: wrap;
+flex-direction: row;  
+}   
+  .footer{
     display: flex;
     justify-content: space-between;
     margin-top: 6em;    
+}    
+  
+@media screen and (max-width: 650px) {
+    .footer{
+    display: block;
+    margin-top: 6em;    
+  }    
+  
 }
 </style>

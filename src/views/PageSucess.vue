@@ -4,8 +4,8 @@
                 <img class="img-logo" src="img/logo.png" alt="Logo Intern Sign Up ">
                 <h1>Sucess!</h1>
             </div>
-            <div class="sucess-button">
-            <MyButton name="Go Back!" class="button"/>
+            <div @click="goBack()">
+            <MyButton name="Go Back!" class="sucess" />
             </div>
           
        
@@ -23,8 +23,16 @@ export default {
   components: {
     MyButton
 
-  }
-}
+  },
+  methods: {
+    
+    goBack(){
+        this.$router.push("/");
+      }
+    }
+} 
+ 
+
 </script>
 
 <style scoped>
@@ -41,16 +49,6 @@ export default {
 .logo h1{
     margin: 0;
 }
-.button{
-    display: flex;
-    justify-content: center;
-    width: 30%;
-    padding: 35px ;
-}
-.sucess-button{
-    
-  
-  
-}
+
 </style>>
 

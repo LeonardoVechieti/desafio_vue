@@ -8,27 +8,33 @@
     </div>
 </template>
 <script>
+import {mapActions} from "vuex"
 export default {
-
+    
     data() {
 
         return {
             label: 'I accept the terms and privacy'
         }
+        
+    },
+    props: {
+
+    },
+    methods: {
+        ...mapActions(["setBox"]),
+        valorPegar(e){
+        if(this.type === "checkbox"){
+            this.setBox(e.target.value);
+        }
     }
-}
+    },
+ }
 </script>
-<style>
-span p{
-    padding: 1px 7px;
-    color: red;
-    margin: 0 0 0 0;
-    position: absolute;
-}
-.span-check p{
-   padding: 1em;
-   width: 100%;
-}
+
+
+<style scoped>
+
 
 .checkbox{
     position: relative;

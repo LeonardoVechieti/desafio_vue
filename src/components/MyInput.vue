@@ -1,7 +1,7 @@
 <template>
-  <div>
-  <form class="form">
-    <div :class="classDivForm" >
+  
+  <div class="form-flex"> 
+    <div :class="classDivForm" :id="idForm" >
       <label :for="labelInput">{{ fieldInput }}  </label>
       <input
         :type="type"
@@ -11,9 +11,10 @@
         :value="valueInput"
         @input="valorPegar"
       />
+      <p :id="idErro" class="erro">{{ erro }} </p>
     </div>
-  </form>
   </div>
+  
 </template>
 
 <script>
@@ -30,6 +31,10 @@ export default {
     classDivForm: String,
     valueInput: String,
     fieldInput: String,
+    idForm: String,
+    erro: String,
+    idErro: String,
+    
     
   }, 
   methods: {
@@ -49,23 +54,38 @@ export default {
         this.setButton(e.target.value);
       }
     },
+    storage(){
+      
+      //local storage
+      //let storage = {name, email, password, phone, birthday}
+      //Transformar o objeto em string e salvar em localStorage
+      //localStorage.setItem('storage', JSON.stringify(storage));
+      //Receber a string
+      let storageString = localStorage.getItem('storage');
+      //transformar em objeto novamente
+      let storageObj = JSON.parse(storageString);
+      console.log(storageObj.nome);
+    },
    },
   
  }
 </script>
 
-<style scooped>
-form div{
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+<style >
+.erro{
+  color: red;
+  margin-top: 2px;
+  margin-bottom: 0;
+  position: absolute;
+  display: none;
+}
+#erro-1{
+  //display: block;
 }
 
-.form label {
-  display: flex;
-  justify-content: flex-start;
+.form {
+  margin-bottom: 1em;
 }
-
 .form input {
  
     padding: 0.8em;
@@ -74,55 +94,41 @@ form div{
     border-radius: 5px;
     outline: none;
 }
-.form-1 {
+#form-1{
   width: 100%;
 }
-.form-1,
-.form-2 {
+.input-1{
+  width: 100%;
+}
+#form-1,
+#form-2 {
   padding-bottom: 15px;
   
 }
 
-.form-2,
-.form-4 {
+#form-2,
+#form-4 {
+  width: 65%;
+  
+}
+
+#form-3,
+#form-5 {
   width: 35%;
   
-}
-
-.form-3,
-.form-5 {
-  width: 35%;
-  padding-left: 2em;
   
-}
-.input-1 {
-  width: 100%;
-  
-}
-
-.input-2,
-.input-4 {
-  width: 100%;
-}
-
-.input-3,
-.input-5 {
-  width: 100%;
-  color: #838282;
 }
 
 @media (max-width: 768px){
 
-    .input{
-      
-    }
-  .form-1,
-  .form-2,
-  .form-4 {
+  
+  #form-1,
+  #form-2,
+  #form-4 {
     width: 97%;
   }
-  .form-3,
-  .form-5 {
+  #form-3,
+  #form-5 {
     display: flex;
     flex-flow: column;
     order: +1;
@@ -133,10 +139,11 @@ form div{
   }
 
 
-  .form-5 {
+  #form-5 {
     width: 55%;
   }
-    .form-3 {
+    
+    #form-3 {
     
   }
 
