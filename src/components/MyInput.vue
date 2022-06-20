@@ -1,111 +1,111 @@
 <template>
-  <div>
-    <form class="form">
-        <div class="input" id="form-1">
-            <label for="name">Full Name *</label>
-            <input type="text" id="name" class="input-1" placeholder="Name">
-            <span id="alertName" class="alert"></span>
-        </div>
-            
-        <div class="input" id="form-2">
-            <label for="email">Email *</label>
-            <input type="email" id="email" class="input-2" placeholder="foo@bar.com">
-            <span id="alertEmail" class="alert"></span>
-        </div>
-        <div class="input" id="form-3">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" class="input-3" placeholder="(83) 00000-0000">
-            <span id="alertPhone" class="alert"></span>
-        </div>
-            
-            
-        <div class="input" id="form-4">
-            <label for="password">Password *</label>
-            <input type="password" id="password" class="input-4">
-            <span id="alertPassword" class="alert"></span>
-        </div>
-        <div class="input" id="form-5">
-            <label for="date">Birthday *</label>
-            <input type="date" id="date" class="input-5" placeholder="">
-            <span id="alertDate" class="alert"></span>
-        </div>
-            
-    </form>
-  </div>  
+  <div :class="classDivForm" :id="idForm">
+    <label :for="labelInput">{{ fieldInput }} </label>
+    <input
+      :type="type"
+      :class="classInput"
+      :placeholder="placeholderInput"
+      :id="idInput"
+      :value="valueInput"
+      @input="valorPegar"
+    />
+    <p :id="idErro" class="erro">{{ erro }}</p>
+  </div>
 </template>
 
-<style scoped>
+<script>
+import { mapActions } from "vuex";
+export default {
+  name: "MyInput",
+  components: {},
+  props: {
+    placeholderInput: String,
+    classInput: String,
+    idInput: String,
+    labelInput: String,
+    type: String,
+    classDivForm: String,
+    valueInput: String,
+    fieldInput: String,
+    idForm: String,
+    erro: String,
+    idErro: String,
+  },
+  methods: {
+    ...mapActions(["setName","setEmail","setPhone","setPassword","setDate","setButton",]),
+    valorPegar(e) {
+      if (this.classInput === "input-1") {
+        this.setName(e.target.value);
+      } else if (this.classInput === "input-2") {
+        this.setEmail(e.target.value);
+      } else if (this.classInput === "input-3") {
+        this.setPhone(e.target.value);
+      } else if (this.classInput === "input-4") {
+        this.setPassword(e.target.value);
+      } else if (this.classInput === "input-5") {
+        this.setDate(e.target.value);
+      } else if (this.classInput === "input-6") {
+        this.setButton(e.target.value);
+      }
+    },
+    storage() {
+      //local storage
+      //let storage = {name, email, password, phone, birthday}
+      //Transformar o objeto em string e salvar em localStorage
+      //localStorage.setItem('storage', JSON.stringify(storage));
+      //Receber a string
+      let storageString = localStorage.getItem("storage");
+      //transformar em objeto novamente
+      let storageObj = JSON.parse(storageString);
+      console.log(storageObj.nome);
+    },
+  },
+};
+</script>
+
+<style>
+.erro {
+  color: red;
+  margin-top: 56px;
+  margin-bottom: 5px;
+  position: absolute;
+  display: none;
+}
+
 .form {
-background-color: #FFFFFF;
-margin-top: 1em;
-margin-bottom: 2em;
-
-border: none;
-border-radius: 15px;
-display: flex;
-flex-wrap: wrap;
-flex-direction: row;
-  
-}
-
-.form label {
+  margin-top: 1em;
+  margin-bottom: 2em;
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
+  margin-bottom: 1em;
 }
-
 .form input {
-    padding: 0.8em;
-    border: 1px solid #CCC;
-    border-color: #8d7a7a ;
-    border-radius: 5px;
-    outline: none;
+  padding: 0.8em;
+  border: 1px solid #ccc;
+  border-color: #8d7a7a;
+  border-radius: 5px;
+  outline: none;
 }
 #form-1 {
-  width: 95%;
-}
-#form-1,
-#form-2 {
-  padding-bottom: 15px;
-  
+  width: 100%;
 }
 
 #form-2,
 #form-4 {
-  width: 55%;
-  
+  width: 53%;
+  padding-right: 0.6em;
 }
 
 #form-3,
 #form-5 {
-  width: 35%;
-  padding-left: 2em;
-  
-}
-.input-1 {
-  width: 100%;
-  
+  width: 45.1%;
 }
 
-.input-2,
-.input-4 {
-  width: 100%;
-}
-
-.input-3,
-.input-5 {
-  width: 100%;
-  color: #838282;
-}
-
-@media (max-width: 768px){
-
-    .input{
-      
-    }
+@media (max-width: 768px) {
   #form-1,
   #form-2,
   #form-4 {
-    width: 97%;
+    width: 96%;
   }
   #form-3,
   #form-5 {
@@ -115,17 +115,15 @@ flex-direction: row;
     margin: 0;
     padding-left: 0;
     padding-top: 1em;
-    
   }
-
 
   #form-5 {
-    width: 55%;
+    width: 45%;
   }
-    #form-3 {
-    
+  #form-3 {
+    width: 45%;
+    margin-right: 2.1em;
   }
-
 
   .input-1,
   .input-2,
@@ -134,12 +132,8 @@ flex-direction: row;
   }
 
   .input-3,
-  .input-5{
-    width: 50%;
+  .input-5 {
+    width: 85%;
   }
- 
-  
 }
-
-</style>>
-
+</style>

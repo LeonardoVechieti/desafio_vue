@@ -1,63 +1,127 @@
 <template>
   <div class="page">
     <MyLogo />
-    <MyInput />
+    <div class="flex">
+      <MyInput
+        idForm="form-1"
+        placeholderInput="Full name"
+        classDivForm="form"
+        type="text"
+        classInput="input-1"
+        labelInput="name"
+        idInput="name"
+        value="fullName"
+        smallClass="classSmall"
+        fieldInput="Full Name *"
+        erro="Name Invalid"
+        idErro="erro-1"
+      />
+      <MyInput
+        idForm="form-2"
+        placeholderInput="foo@bar.com"
+        type="email"
+        classInput="input-2"
+        labelInput="email"
+        idInput="email"
+        valueInput=""
+        classDivForm="form"
+        fieldInput="Email *"
+        erro="Email Invalid"
+        idErro="erro-2"
+      />
+      <MyInput
+        idForm="form-3"
+        classDivForm="form"
+        placeholderInput="(83) 00000-0000"
+        type="text"
+        classInput="input-3"
+        labelInput="phone"
+        idInput="phone"
+        fieldInput="Phone *"
+        erro="Phone Invalid"
+        idErro="erro-3"
+      />
+      <MyInput
+        idForm="form-4"
+        classDivForm="form"
+        placeholderInput="Password"
+        type="password"
+        classInput="input-4"
+        labelInput="password"
+        idInput="password"
+        fieldInput="Password *"
+        erro="Password Invalid"
+        idErro="erro-4"
+      />
+      <MyInput
+        idForm="form-5"
+        classDivForm="form"
+        type="date"
+        classInput="input-5"
+        labelInput="birthday"
+        idInput="Birthday"
+        invalidText="Date Invalid"
+        fieldInput="Birthday *"
+        erro="Age Invalid"
+        idErro="erro-5"
+      />
+    </div>
     <div class="footer">
       <div class="my-check-box">
         <MyCheckbox />
       </div>
       <div class="my-button">
-        <MyButton name="Register" />
-      </div>  
+        <MyButton name="Register" classButton="register" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-
-import MyLogo from '../components/MyLogo.vue'
-import MyInput from '../components/MyInput.vue'
-import MyCheckbox from '../components/MyCheckbox.vue'
-import MyButton from '../components/MyButton.vue'
+import MyLogo from "../components/MyLogo.vue";
+import MyInput from "../components/MyInput.vue";
+import MyCheckbox from "../components/MyCheckbox.vue";
+import MyButton from "../components/MyButton.vue";
 
 export default {
-  
-
   components: {
-    MyLogo, 
-    MyInput, 
+    MyLogo,
+    MyInput,
     MyCheckbox,
-    MyButton
-
-  }
-}
+    MyButton,
+  },
+};
 </script>
 
 <style>
-body{
-    background-color: #ECEEF2;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+.flex {
+  /* background: olive; */
+  width: 85%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  /* justify-content: space-between; */
 }
-.page{
-    background-color: #FFFFFF;
-    margin-top: 6em;
-    margin-bottom: 6em;
-    max-width: 550px;
-    height: 100%;
-    min-height: 20em;
-    padding: 1.5em;
-    border: none;
-    border-radius: 15px;
-    
+.footer {
+  /* background: olive; */
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6em;
+  width: 80%;
 }
 
-.footer{
+@media screen and (max-width: 768px) {
+  .footer {
+    display: block;
+    margin-top: 2em;
+  }
+  .flex {
+    /* background: rgb(255, 255, 0); */
+    width: 85%;
     display: flex;
-    justify-content: space-between;
-    margin-top: 6em;    
+    flex-wrap: wrap;
+    flex-direction: row;
+    /* justify-content: space-between; */
+  }
 }
 </style>
