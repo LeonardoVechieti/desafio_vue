@@ -1,10 +1,8 @@
 <template>
   <div class="page">
-   
     <MyLogo />
-     <div class="flex">
-    
-    <MyInput  
+    <div class="flex">
+      <MyInput
         idForm="form-1"
         placeholderInput="Full name"
         classDivForm="form"
@@ -17,8 +15,8 @@
         fieldInput="Full Name *"
         erro="Name Invalid"
         idErro="erro-1"
-        />
-    <MyInput
+      />
+      <MyInput
         idForm="form-2"
         placeholderInput="foo@bar.com"
         type="email"
@@ -30,7 +28,6 @@
         fieldInput="Email *"
         erro="Email Invalid"
         idErro="erro-2"
-         
       />
       <MyInput
         idForm="form-3"
@@ -68,7 +65,6 @@
         erro="Age Invalid"
         idErro="erro-5"
       />
-    
     </div>
     <div class="footer">
       <div class="my-check-box">
@@ -76,51 +72,56 @@
       </div>
       <div class="my-button">
         <MyButton name="Register" classButton="register" />
-      </div>  
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-
-import MyLogo from '../components/MyLogo.vue'
-import MyInput from '../components/MyInput.vue'
-import MyCheckbox from '../components/MyCheckbox.vue'
-import MyButton from '../components/MyButton.vue'
+import MyLogo from "../components/MyLogo.vue";
+import MyInput from "../components/MyInput.vue";
+import MyCheckbox from "../components/MyCheckbox.vue";
+import MyButton from "../components/MyButton.vue";
 
 export default {
-  
-
   components: {
-    MyLogo, 
-    MyInput, 
+    MyLogo,
+    MyInput,
     MyCheckbox,
-    MyButton
-
-  }
-}
+    MyButton,
+  },
+};
 </script>
 
-<style  >
-.flex{   
-  
-margin-top: 1em;
-margin-bottom: 2em;
-display: flex;
-flex-wrap: wrap;
-flex-direction: row;  
-}   
-  .footer{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 6em;    
-}    
-  
-@media screen and (max-width: 650px) {
-    .footer{
+<style>
+.flex {
+  /* background: olive; */
+  width: 85%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  /* justify-content: space-between; */
+}
+.footer {
+  /* background: olive; */
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6em;
+  width: 80%;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
     display: block;
-    margin-top: 6em;    
-  }    
-  
+    margin-top: 2em;
+  }
+  .flex {
+    /* background: rgb(255, 255, 0); */
+    width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    /* justify-content: space-between; */
+  }
 }
 </style>

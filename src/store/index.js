@@ -12,7 +12,7 @@ export default new Vuex.Store({
     date: "",
     box: "",
     button: "",
-    valid: "",
+    valida: "",
     controle: true,
     controlName: false,
     controlEmail: false,
@@ -28,6 +28,7 @@ export default new Vuex.Store({
     
   },
   mutations: {
+    
     setName(state, name) {
       state.name =name;
       //console.log(name)
@@ -86,7 +87,7 @@ export default new Vuex.Store({
     setDate(state, date) {
       state.date =date;
       //console.log(date)
-      if(state.date === ""){
+      if(date === ""){
         state.controlDate=false;
             
     }else {
@@ -97,8 +98,12 @@ export default new Vuex.Store({
       state.button =button;
       console.log(button)
     },
-    valida(state, valida){
-      state.valida =valida;
+    setBox(state,box){
+      state.box = box;
+      console.log(box);
+    },
+    setValida(state, valida){
+      state.valida = valida;
       state.controle=true;
       console.log("to na funcçao valida")
 
@@ -152,10 +157,14 @@ export default new Vuex.Store({
         document.getElementById("erro-5").style.display="none";
       }
         console.log("final",state.controle);
+        console.log(state.controle);
         if(state.controle===true){
           console.log("validou no valida");
+          
           return true;
         }
+
+        //console.log("eu sou controle", controle);
       
     },
     storage(state, storage){
@@ -189,9 +198,12 @@ export default new Vuex.Store({
     },
     setButton({commit}, button){
       commit('setButton', button);
-    }, 
-    valida({commit}, valida){
-      commit('valida', valida);
+    },
+    setBox({commit}, box){
+      commit('setBox', box);
+    },
+    setValida({commit}, valida){
+      commit('setValida', valida);
     },
     storage({commit}, storage){
       commit('storage', storage);
